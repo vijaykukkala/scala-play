@@ -14,10 +14,9 @@ object Fibonocci {
   fMap += 2 -> 2;
 
   def main(args: Array[String]) {
-    var fVal = 0L; var i = 1;
-    while (fVal >= 0) {
-      fVal = f(i)
-      i += 1
+    var counter = 1;
+    while (f(counter) >= 0) {
+      counter += 1
     }
     println(fMap.values.filter(_ % 2 == 0).reduceRight(_ + _))
   }
