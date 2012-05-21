@@ -7,7 +7,7 @@ object Fibonocci {
 
   val fMap = new HashMap[Int, Long] // used to store the Fibonocci already calcuated.
 
-  val maxValue: Long = 4000000
+  val maxValue = 4000000L
 
   //Initialize
   fMap += 1 -> 1;
