@@ -1,5 +1,6 @@
 package com.lnc.vijay.pkg
 import java.util.ArrayList
+import scala.collection.mutable.HashSet
 
 object HelloWorldObj {
 
@@ -23,12 +24,20 @@ object HelloWorldObj {
 	  val p2 = new Point(7, 5)
 	  println("Slope of line containing points " + slope(p2, p1))
 	  
-	  println("factorial(0) = " + factorial(0))
-	  println("factorial(1) = " + factorial(1))
-	  println("factorial(2) = " + factorial(2))
-	  println("factorial(3) = " + factorial(3))
-	  println("factorial(4) = " + factorial(4))
-	  println("factorial(5) = " + factorial(5))
+	  for(i <- 0 to 5)
+	  println("factorial(" + i + ") = " + factorial(i))
+	  
+	  
+	  var pointSet = HashSet(new Point(4, 5), new Point(4, 7), new Point(4, 1), new Point(4, 9), new Point(4, 8),
+	      new Point(3, 5),  new Point(3, 7), new Point(3, 1), new Point(3, 9),  new Point(3, 8))
+	 
+	  println(pointSet.size)
+	  
+	  pointSet += new Point(3,5)
+	  
+	  println(pointSet.size)
+	  
+	  println(pointSet.filter(_.xc ==3).maxBy(_.yc))
   }
   
   def slope(p1: Point, p2:Point): Float = {
