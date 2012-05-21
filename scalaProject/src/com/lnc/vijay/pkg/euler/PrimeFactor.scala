@@ -47,6 +47,6 @@ object PrimeFactor {
     var quotient = (x / y)
     if (x % y == 0)
       return Tuple2(y, quotient)
-    else return Tuple2(0, 0)
+    return (0, 0)
   }
 }
