@@ -13,32 +13,20 @@ object PrimeFactor {
   def main(args: Array[String]) {
     
     val qNumber = 600851475143L
+    
+    val factorSet = calculateFactorList(qNumber)
 
-    var i = 2L
-    var list = new HashSet[Long]
-    var lastFound = 0L
-    while (i < Math.sqrt(qNumber) || !list.contains(lastFound)) {
-      var result = factor(qNumber, i)
-      if (result._2 != 0) {
-        result.productIterator foreach {
-          (item: Any) => list.add(
-              item match {case x:Long => x
-                		  case _ =>  throw new ClassCastException})}
-        lastFound = result._2
-      }
-      i += 1
-    }
-
-    println(list)
-    println(list filter isPrime max)
+    println(factorSet)
+    
+    println(factorSet filter isPrime max)
   }
 
   def isPrime(x: Long): Boolean = {
-    var i = 2L;
-    while (i < Math.sqrt(x)) {
-      var result = factor(x, i)
+    var counter = 2L;
+    while (counter < Math.sqrt(x)) {
+      var result = factor(x, counter)
       if (result._2 != 0) return false;
-      i += 1;
+      counter += 1;
     }
     return true;
   }
@@ -48,5 +36,24 @@ object PrimeFactor {
     if (x % y == 0)
       return Tuple2(y, quotient)
     return (0, 0)
+  }
+  
+  private def calculateFactorList(qNumber: Long): HashSet[Long] = {
+
+    var counter = 2L
+    var factorSet = new HashSet[Long]
+    var lastFound = 0L
+    while (counter < Math.sqrt(qNumber) || !factorSet.contains(lastFound)) {
+      var result = factor(qNumber, counter)
+      if (result._2 != 0) {
+        result.productIterator foreach {
+          (item: Any) => factorSet.add(
+              item match {case x:Long => x
+                		  case _ =>  throw new ClassCastException})}
+        lastFound = result._2
+      }
+      counter += 1
+    }
+    factorSet
   }
 }
