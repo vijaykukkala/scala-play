@@ -8,7 +8,7 @@ import scala.collection.mutable.HashSet
  * 
  * Calculate the largest prime factor of the number 600851475143 
  */
-object PrimeFactor {
+object PrimeFactor extends PrimeNumber{
 
   def main(args: Array[String]) {
     
@@ -21,23 +21,8 @@ object PrimeFactor {
     println(factorSet filter isPrime max)
   }
 
-  def isPrime(x: Long): Boolean = {
-    var counter = 2L;
-    while (counter < Math.sqrt(x)) {
-      var result = factor(x, counter)
-      if (result._2 != 0) return false;
-      counter += 1;
-    }
-    return true;
-  }
-
-  def factor(x: Long, y: Long): Tuple2[Long, Long] = {
-    var quotient = (x / y)
-    if (x % y == 0)
-      return Tuple2(y, quotient)
-    return (0, 0)
-  }
   
+
   private def calculateFactorList(qNumber: Long): HashSet[Long] = {
 
     var counter = 2L
