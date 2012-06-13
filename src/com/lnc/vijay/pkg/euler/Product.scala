@@ -9,7 +9,7 @@ import scala.collection.immutable.TreeSet
  */
 object Product {
 
-  var inputStr = "73167176531330624919225119674426574742355349194934" +
+  val inputStr = "73167176531330624919225119674426574742355349194934" +
 			    "96983520312774506326239578318016984801869478851843" +
 			    "85861560789112949495459501737958331952853208805511" +
 			    "12540698747158523863050715693290963295227443043557" +
@@ -47,7 +47,7 @@ object Product {
     
   }
   def window(input: String, offset: Int): Set[Int] = {
-    var inputList = new TreeSet[Int]
+    var inputList = new TreeSet[Int] // used a treeSet to get sorted elements
     var counter = 0
     while (counter <= (input.length() - offset)) {
       inputList += input.substring(counter, counter + offset).toInt
