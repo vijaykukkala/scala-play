@@ -1,6 +1,5 @@
 package com.lnc.vijay.pkg.euler
 import scala.collection.immutable.Range
-import scala.collection.mutable.LinkedList
 import scala.collection.mutable.MutableList
 
 /**
@@ -14,7 +13,7 @@ object SumPrimes extends PrimeNumber{
   def main(args: Array[String]) {
 	  var primesList = MutableList[Long]();
 	  new Range(2, 2000000, 1).foreach(arg => { if (isPrime(arg)) primesList += arg })
-	  println(primesList.reduceLeft(_+_)) // reduceRight throws a Exception
+	  println(primesList.reduceLeft(_+_)) // reduceRight throws a Exception in thread "main" java.lang.StackOverflowError
 	  
   }
 }
