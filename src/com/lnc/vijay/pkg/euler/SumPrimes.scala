@@ -14,6 +14,7 @@ object SumPrimes extends PrimeNumber{
 	  var primesList = MutableList[Long]();
 	  new Range(2, 2000000, 1).foreach(arg => { if (isPrime(arg)) primesList += arg })
 	  println(primesList.reduceLeft(_+_)) // reduceRight throws a Exception in thread "main" java.lang.StackOverflowError
+	  									// some explanation is given here http://days2012.scala-lang.org/sites/days2012/files/bjarnason_trampolines.pdf
 	  
   }
 }
