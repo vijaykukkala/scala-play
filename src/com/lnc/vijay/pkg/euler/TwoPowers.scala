@@ -10,7 +10,7 @@ import scala.annotation.tailrec
 object TwoPowers {
 
   def main(args: Array[String]) {
-	val twoPowers = power(1000)
+	val twoPowers = power(10000)
     println("2^1000 = " + twoPowers)
 	var sum = 0;	
 	for(x <- twoPowers) {
@@ -40,6 +40,4 @@ object TwoPowers {
   private def digitize(carryOn: String): Int = {
     if (carryOn.equals("")) 0 else carryOn.toInt
   }
-  
-
 }
