@@ -1,6 +1,5 @@
 package com.lnc.vijay.pkg.euler
-import scala.MathCommon
-import scala.runtime.RichDouble
+import scala.annotation.tailrec
 
 /**
  * http://projecteuler.net/problem=16
@@ -22,7 +21,7 @@ object TwoPowers {
   
   def power(x:Int): String = {
     if (x == 1) "2" 
-      else  doubleIt(power(x -1).toString) //Currently fails at 10000
+      else  doubleIt(power(x -1).toString) //Currently fails at 10000 adding @tailrec gives an error.
   }
   
   def doubleIt(x:String):String = {
