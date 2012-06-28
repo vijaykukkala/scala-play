@@ -31,28 +31,9 @@ object Product {
 			    "71636269561882670428252483600823257530420752963450"
   def main(args: Array[String]) {
     var offset = 5
-    var items = window(inputStr, offset)
-    println(items.map(digitProduct(_)).max)
+    var items = inputStr.grouped(5).toList
+    println(items.map(x => (0 /: x)(_.toInt + _.toInt)).max)
    
   }
-
-  def digitProduct(input: Int): Int = {
-    var inputX = input
-    var res = 1
-    while (inputX > 0) {
-       res *= (inputX % 10)
-       inputX /= 10
-    }
-    return res
-    
-  }
-  def window(input: String, offset: Int): Set[Int] = {
-    var inputList = new TreeSet[Int] // used a treeSet to get sorted elements
-    var counter = 0
-    while (counter <= (input.length() - offset)) {
-      inputList += input.substring(counter, counter + offset).toInt
-      counter += 1
-    }
-    return inputList
-  }
+ 
 }
