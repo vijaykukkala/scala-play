@@ -31,7 +31,7 @@ object Product {
 			    "71636269561882670428252483600823257530420752963450"
   def main(args: Array[String]) {
     var offset = 5
-    var items = inputStr.grouped(5).toList
+    var items = inputStr.sliding(5,1).toList
     println(items.map(x => (0 /: x)(_.toInt + _.toInt)).max)
    
   }
