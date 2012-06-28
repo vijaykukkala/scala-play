@@ -45,6 +45,7 @@ object Product {
   * http://projecteuler.net/problem=9
   */
   def pythogoreanTriplet() {
+     val f = List.range(1,1001)
      val triplets = for (i <-f; j <- f; k <-f; if ((square(i) + square(j) == square(k)) && (i + j + k == 1000))) yield (i, j, k)
      triplets.map(x => x._1 * x._2 * x._3).distinct        
   }
