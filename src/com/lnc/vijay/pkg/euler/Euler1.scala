@@ -3,14 +3,10 @@ package com.lnc.vijay.pkg.euler
 object Euler1 {
 
     def main(args: Array[String]){
-      val range = 1.until(1000)
-      var sum = 0
-      for (i <- range) {
-        if (factor(i, 3) || factor(i, 5)) {
-          sum += i;
-        }       
-      }
-      println(sum)     
+
+    val f = for (i <- List.range(1, 1000) if (factor(i, 3) || factor(i, 5))) yield i
+    val sum = (0 /: f) (_+_)
+    println(sum)
       
     }
     
