@@ -18,11 +18,11 @@ object SeriesSummation {
   def main(args: Array[String]) {
     
     var n = 101
-    f = List.range(1,n)
+    val f = List.range(1,n)
     val squares = f.map(square(_))
     val sumOfSquares = (0 /: squares)(_+_)
     val sumOfnumbers = (0 /: f)(_+_)
-    println ("difference: " + square(sumOfnumbers) - sumOfSquares)
+    println ("difference: " + (square(sumOfnumbers) - sumOfSquares))
   }
   
   def square(x: Int): Int = { x * x }
