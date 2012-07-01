@@ -30,10 +30,10 @@ object Product {
 			    "05886116467109405077541002256983155200055935729725" +
 			    "71636269561882670428252483600823257530420752963450"
   def main(args: Array[String]) {
-    var offset = 5
-    var items = inputStr.sliding(5,1).toList
-    println(items.map(x => (0 /: x)(_.toInt + _.toInt)).max)
    
+    println("max sliding sum:" + slidingSum)
+   
+    println("max palindrome between 100 and 1000" + maximumPalindrome(100, 1000));
   }
  
  /**
@@ -51,5 +51,31 @@ object Product {
   }
   def square(x: Int): Int = { x * x }
   
+  
+  /**
+   * http://projecteuler.net/problem=4
+   * 
+   * A palindromic number reads the same both ways. 
+   * The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 99.
+   * 
+   * Find the largest palindrome made from the product of two 3-digit numbers.
+   */
+  def maximumPalindrome(start:Int, end:Int) {
+     val f = List.range(start,end)
+     val palindromeList = for (i <- f; j <- f if (isPalindrome(i, j))) yield i * j
+     palindromeList.max
+  }
+  
+  def isPalindrome(x:Int, y:Int): Boolean = {
+    val result = x * y
+    val rString = result.toString
+    return rString.equals(rString.reverse)    
+  }
+  
+  private def slidingSum: Int = {
+    var offset = 5
+    var items = inputStr.sliding(5,1).toList
+    items.map(x => (0 /: x)(_.toInt + _.toInt)).max
+  }
   
 }
