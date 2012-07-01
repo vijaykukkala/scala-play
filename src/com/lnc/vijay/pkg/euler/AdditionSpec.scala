@@ -11,64 +11,35 @@ import java.io.File
 @RunWith(classOf[JUnitRunner])
 class AdditionSpec extends FlatSpec with GivenWhenThen {
 
+  val operation = new Addition
+  
   "For Strings made of numbers" must "perform addition" in {
-
-    given("two Strings")
-    val xs = "1111"
-    val ys = "1111"
-    when("String addition applied")
-    val operation = new Addition
-    val result = operation.add(xs, ys)
-    then("return value")
+    val result = operation.add("1111", "1111")
     assert("2222" equals result)
   }
 
   it must "perform addition 1111 & 4444" in {
 
-    given("two Strings")
-    val xs = "1111"
-    val ys = "4444"
-    when("String addition applied")
-    val operation = new Addition
-    val result = operation.add(xs, ys)
-    then("return value")
+    val result = operation.add("1111", "4444")
     assert("5555" equals result)
   }
 
   it must "perform addition 1111 & 4499" in {
   
-    given("two Strings")
-    val xs = "1111"
-    val ys = "4499"
-    when("String addition applied")
-    val operation = new Addition
-    val result = operation.add(xs, ys)
-    then("return value")
+    val result = operation.add("1111", "4499")
     assert("5610" equals result)
   }
   
    it must "perform addition 009211 & 000799" in {
 
-    given("two Strings")
-    val xs = "009211"
-    val ys = "000799"
-    when("String addition applied")
-    val operation = new Addition
-    val result = operation.add(xs, ys)
-    then("return value")
+    val result = operation.add("009211", "000799")
     assert("010010" equals result)
   }
 
   it must "perform addition 08762 & 04499" in {
  
-    given("two Strings")
-    val xs = "08762"
-    val ys = "04499"
-    when("String addition applied")
-    val operation = new Addition
-    val result = operation.add(xs, ys)
-    then("return value")
-    assert("13261" equals result)
+   val result = operation.add("08762", "04499")
+   assert("13261" equals result)
   }
 
   it must "perform addition for list of 4 digit numbers" in {
@@ -76,7 +47,7 @@ class AdditionSpec extends FlatSpec with GivenWhenThen {
     given("List of 4 digit numbers")
     val xs = "371072875339021027987979982208375902465101357402".grouped(4).toList.map("00" + _)
     when("String addition applied")
-    val operation = new Addition
+    
     val result = ("000000" /: xs)(operation.add(_, _))
     then("return value")
     val expected = (0 /: xs.map(_.toInt))(_ + _)
@@ -88,8 +59,7 @@ class AdditionSpec extends FlatSpec with GivenWhenThen {
     given("two Strings")
     val xs = "037107287533902102798797998220837590246510135740250"
     val ys = "046376937677490009712648124896970078050417018260538"
-    when("String addition applied")
-    val operation = new Addition
+    when("String addition applied")    
     val result = operation.add(xs, ys)
     then("return value")
     assert("083484225211392112511446123117807668296927154000788" equals result)
@@ -101,7 +71,7 @@ class AdditionSpec extends FlatSpec with GivenWhenThen {
     val xs = List("037107287533902102798797998220837590246510135740250", "046376937677490009712648124896970078050417018260538", "074324986199524741059474233309513058123726617309629",
       "091942213363574161572522430563301811072406154908250")
     when("String addition applied")
-    val operation = new Addition
+    
     val result = xs.scanLeft("000000000000000000000000000000000000000000000000000")(operation.add(_, _))
     then("return value")
     println(result.max)
@@ -127,7 +97,7 @@ class AdditionSpec extends FlatSpec with GivenWhenThen {
       "62467221648435076201727918039944693004732956340691", "15732444386908125794514089057706229429197107928209")
     val xs = xstr.map("000" + _)
     when("String addition applied")
-    val operation = new Addition
+    
     val result = xs.scanLeft("00000000000000000000000000000000000000000000000000000")(operation.add(_, _))
     then("return value")
     assert("01522310157564745702505660431125059581636173705657872" equals result.max)
@@ -140,11 +110,10 @@ class AdditionSpec extends FlatSpec with GivenWhenThen {
     val lines = Source.fromFile(new File(filename)).getLines().toList
     val xs = lines.map("000"+_)
     when("read a file")
-    val operation = new Addition
+    
     var initialValue ="00000000000000000000000000000000000000000000000000000"
     val scanResult = xs.scanLeft(initialValue)(operation.add(_,_))
     then("validate")
-   // scanResult.foreach(println(_))
     assert("05537376230390876637302048746832985971773659831892672" equals scanResult.max)
   }
 
