@@ -1,15 +1,11 @@
 package com.lnc.vijay.pkg.euler
 
 import org.junit.runner.RunWith
-import org.scalatest.Style
 import org.scalatest.FlatSpec
-import org.scalatest.GivenWhenThen
 import org.scalatest.junit.JUnitRunner
-import scala.io.Source
-import java.io.File
 
 @RunWith(classOf[JUnitRunner])
-class MultiplicationSpec extends FlatSpec with GivenWhenThen {
+class MultiplicationSpec extends FlatSpec {
 
   def operation = new Addition
   
@@ -33,7 +29,6 @@ class MultiplicationSpec extends FlatSpec with GivenWhenThen {
     for(i <- 1 to 10) {
       result = operation.multiply("0" + result, i)
     }
-    println(result)
     var expected = (1 /: List.range(1, 11))(_*_)
     assert(expected == result.toInt)
   }
