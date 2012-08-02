@@ -64,7 +64,7 @@ object Product {
    * What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral formed in the same way?
    */
   def spiralSum() {
-    def f(x:Int) = 4 * square(x) - 6 * x + 6
+    def f(x:Int) = 4 * square(x) - 6 * x + 6 // Vertices on the 4 corners = x^2 + (x^2 - x + 1) + (x^2 - 2x +2) + (x^2 -3x + 3)
     
     val fx= for(x <- 3 to 1001 by 2) yield f(x) 
     
